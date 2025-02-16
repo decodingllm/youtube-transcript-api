@@ -1,4 +1,5 @@
 def extract_transcript_text(apiResponse):
+    print("apiResponse: ", apiResponse)
     transcript_text = []
     if isinstance(apiResponse, dict):
         for key, value in apiResponse.items():
@@ -12,6 +13,7 @@ def extract_transcript_text(apiResponse):
     return transcript_text
 
 def get_transcript_with_params(video_id, api_key, rapidapi_host, platform):
+    print("video_id: ", video_id)
     import http.client
     import urllib.parse
 
