@@ -36,10 +36,17 @@ def get_transcript_with_params(video_id, api_key, rapidapi_host, platform):
     data = res.read()
     return data.decode("utf-8")
 
-
+from config import tokenizer, model
 def summarize_text(text):
     # testing summarization function by getting only the the first 3 sentences
     print("summary function triggered successfully")
-    sentences = text.split('.')
-    summary = '. '.join(sentences[:3]) + '.'
+    # Tokenize the input text
+    inputs = tokenizer.encode("summarize: " + text, return_tensors="pt", max_length=1024, truncation=True)
+    
+    # Generate summary
+    summary_ids = model.generate(inputs, max_length=150, min_length=40, length_penalty=2.0, num_beams=4, early_stopping=True)
+    
+    # Decode the summary
+    summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    
     return summary
