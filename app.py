@@ -45,5 +45,10 @@ def get_transcript(request: URLRequest):
 def get_summary(request: URLRequest):
     transcript_response = get_transcript(request)
     transcript_text = transcript_response["transcript_text"]
+    
+    # Convert list to string if necessary
+    if isinstance(transcript_text, list):
+        transcript_text = ' '.join(transcript_text)
+    
     summary = summarize_text(transcript_text)
     return {"summary": summary}
