@@ -58,8 +58,7 @@ def text_summarisation(transcript_text):
     res = conn.getresponse()
     data = res.read()
     print("length of 'data' is " + data.tostring().length)
-    
-    return summarize_text(data.decode("utf-8"))
+    return data.decode("utf-8")
     
 
 #from config import tokenizer, model
