@@ -41,5 +41,9 @@ def get_transcript(request: URLRequest):
 
     return {"transcript_text": transcript_text}
 
-#get_transcript(request=URLRequest(baseURL="https://www.youtube.com/watch?v=Db6ZRMSbUfg"))
-#get_transcript({"baseURL": "https://www.youtube.com/watch?v=Db6ZRMSbUfg"})
+@app.post("/get_summary")
+def get_summary(request: URLRequest):
+    transcript_response = get_transcript(request)
+    transcript_text = transcript_response["transcript_text"]
+    summary = summarize_text(transcript_text)
+    return {"summary": summary}
