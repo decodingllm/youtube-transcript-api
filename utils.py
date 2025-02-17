@@ -57,7 +57,7 @@ def text_summarisation(transcript_text):
     conn.request("POST", "/summarize", transcript_text, headers)
     res = conn.getresponse()
     data = res.read()
-    print("length of 'data' is "data.tostring().length)
+    print("length of 'data' is " + data.tostring().length)
     
     return summarize_text(data.decode("utf-8"))
     
