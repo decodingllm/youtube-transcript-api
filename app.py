@@ -11,6 +11,13 @@ class URLRequest(BaseModel):
     baseURL: str
 
 print("URLRequest class defined")
+
+
+@app.get("/healthCheck")
+def health_check():
+    return {"status": "ok"}
+print("health_check route defined")
+
 @app.post("/get_transcript")
 def get_transcript(request: URLRequest):
     baseURL = request.baseURL
