@@ -62,17 +62,17 @@ def text_summarisation(transcript_text):
     return summarize_text(data.decode("utf-8"))
     
 
-from config import tokenizer, model
-def summarize_text(text):
+#from config import tokenizer, model
+#def summarize_text(text):
     # testing summarization function by getting only the the first 3 sentences
     print("summary function triggered successfully")
     # Tokenize the input text
-    inputs = tokenizer.encode("summarize: " + text, return_tensors="pt", max_length=1024, truncation=True)
+    #inputs = tokenizer.encode("summarize: " + text, return_tensors="pt", max_length=1024, truncation=True)
     
     # Generate summary
-    summary_ids = model.generate(inputs, max_length=150, min_length=40, length_penalty=2.0, num_beams=4, early_stopping=True)
+   # summary_ids = model.generate(inputs, max_length=150, min_length=40, length_penalty=2.0, num_beams=4, early_stopping=True)
     
     # Decode the summary
-    summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    #summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
     
-    return summary
+   # return summary
