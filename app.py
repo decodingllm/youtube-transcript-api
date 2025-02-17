@@ -2,7 +2,7 @@ print("Loading app.py")
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import json
-from utils import extract_transcript_text, get_transcript_with_params
+from utils import extract_transcript_text, get_transcript_with_params, summarize_text
 
 app = FastAPI()
 print("app.py loaded")
