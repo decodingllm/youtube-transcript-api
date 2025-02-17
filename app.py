@@ -2,7 +2,7 @@ print("Loading app.py")
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import json
-from utils import extract_transcript_text, get_transcript_with_params, summarize_text
+from utils import extract_transcript_text, get_transcript_with_params, text_summarisation, summarize_text
 
 app = FastAPI()
 print("app.py loaded")
@@ -32,11 +32,7 @@ def get_transcript(request: URLRequest):
     else:
         raise HTTPException(status_code=400, detail="Invalid YouTube URL format. Please provide a URL containing video_id starting with '='.")
 
-    from config import api_key
-    from config import rapidapi_host
-    platform = "youtube"
-
-    apiResponse = json.loads(get_transcript_with_params(video_id, api_key, rapidapi_host, platform))
+    apiResponse = json.loads(get_transcript_with_params(video_id))
     transcript_text = extract_transcript_text(apiResponse)
 
     return {"transcript_text": transcript_text}
@@ -51,5 +47,6 @@ def get_summary(request: URLRequest):
     if isinstance(transcript_text, list):
         transcript_text = ' '.join(transcript_text)
     
-    summary = summarize_text(transcript_text)
+    #summary = summarize_text(transcript_text)
+    summary = text_summarisation(transcript_text)
     return {"summary": summary}
