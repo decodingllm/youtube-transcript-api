@@ -1,5 +1,5 @@
 def extract_transcript_text(apiResponse):
-    print("apiResponse: ", apiResponse)
+    #print("apiResponse: ", apiResponse)
     transcript_text = []
     if isinstance(apiResponse, dict):
         for key, value in apiResponse.items():
@@ -39,6 +39,7 @@ def get_transcript_with_params(video_id, api_key, rapidapi_host, platform):
 
 def summarize_text(text):
     # testing summarization function by getting only the the first 3 sentences
+    print("summary function triggered successfully")
     sentences = text.split('.')
     summary = '. '.join(sentences[:3]) + '.'
     return summary

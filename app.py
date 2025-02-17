@@ -20,12 +20,12 @@ print("health_check route defined")
 
 @app.post("/get_transcript")
 def get_transcript(request: URLRequest):
+    print("get_transcript route triggered")
     baseURL = request.baseURL
     video_id = ""
     print("baseURL: ", baseURL)
 
     if '=' in baseURL:
-        print("baseURL: ", baseURL)
         parts = baseURL.split('=')
         video_id = parts[1]
         print("video_id: ", video_id)
@@ -43,6 +43,7 @@ def get_transcript(request: URLRequest):
 
 @app.post("/get_summary")
 def get_summary(request: URLRequest):
+    print("get_summary route triggered")
     transcript_response = get_transcript(request)
     transcript_text = transcript_response["transcript_text"]
     
