@@ -9,5 +9,4 @@ rapidapi_host = "youtube-video-summarizer-gpt-ai.p.rapidapi.com"
 #model = BartForConditionalGeneration.from_pretrained(summary_model)
 
 #loading summarizer model
-gpt-api-key = "2bd75d2069msh7d63312ea77e344p1786cbjsn875221b51434",
-gpt-rapidapi_host = "gpt-summarization.p.rapidapi.com"
+gpt_rapidapi_host = "gpt-summarization.p.rapidapi.com"

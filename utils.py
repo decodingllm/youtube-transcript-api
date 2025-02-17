@@ -44,12 +44,12 @@ def get_transcript_with_params(video_id):
 def text_summarisation(transcript_text):
     print("text_summarisation function triggered successfully")
     
-    from config import gpt_api_key
+    from config import api_key
     from config import gpt_rapidapi_host
     conn = http.client.HTTPSConnection(gpt_rapidapi_host)
 
     headers = {
-        'x-rapidapi-key': gpt_api_key,
+        'x-rapidapi-key': api_key,
         'x-rapidapi-host': gpt_rapidapi_host,
         'Content-Type': "application/json"
     }
