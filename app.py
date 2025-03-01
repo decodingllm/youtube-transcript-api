@@ -2,7 +2,8 @@ print("Loading app.py")
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import json
-from utils import extract_transcript_text, get_transcript_with_params, text_summarisation
+from utils import extract_transcript_text, get_transcript_with_params, text_summarisation,text_summarisation_siddharth
+import uvicorn
 
 app = FastAPI()
 print("app.py loaded")
@@ -48,5 +49,8 @@ def get_summary(request: URLRequest):
         transcript_text = ' '.join(transcript_text)
     
     #summary = summarize_text(transcript_text)
-    summary = text_summarisation(transcript_text)
+    summary = text_summarisation_siddharth(transcript_text)
     return {"summary": summary}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
